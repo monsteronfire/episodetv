@@ -1,0 +1,23 @@
+h1 Listing episodes
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @episodes.each do |episode|
+      tr
+        td = episode.title
+        td = episode.description
+        td = link_to 'Show', episode
+        td = link_to 'Edit', edit_episode_path(episode)
+        td = link_to 'Destroy', episode, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Episode', new_episode_path

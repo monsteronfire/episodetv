@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @episode.title
+p
+  strong Description:
+  = @episode.description
+
+= link_to 'Edit', edit_episode_path(@episode)
+'|
+= link_to 'Back', episodes_path
