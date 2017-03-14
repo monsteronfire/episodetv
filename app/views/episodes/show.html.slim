@@ -7,6 +7,4 @@ p
   strong Description:
   = @episode.description
 
-= link_to 'Edit', edit_episode_path(@episode)
-'|
-= link_to 'Back', episodes_path
+= link_to 'Subscribe to watch', new_subscription_path, class: 'btn btn-primary'
