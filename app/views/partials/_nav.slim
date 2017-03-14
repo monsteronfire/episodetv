@@ -6,6 +6,7 @@ header.navbar.navbar-inverse
       li = link_to 'Episodes', episodes_path
     ul.nav.navbar-nav.navbar-right
       -if user_signed_in?
+        li = link_to current_user.email, edit_user_registration_path
         li = link_to 'Log out', destroy_user_session_path, method: :delete
       - else
         li = link_to 'Sign up', new_user_registration_path

@@ -15,11 +15,11 @@ table
         td = episode.title
         td = episode.description
         td = link_to 'Show', episode, class: 'btn btn-default'
-        - if user_signed_in?
+        - if current_user && current_user.admin?
           td = link_to 'Edit', edit_episode_path(episode), class: 'btn btn-default'
           td = link_to 'Destroy', episode, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
 
 br
 
-- if user_signed_in?
+- if current_user && current_user.admin?
   = link_to 'New Episode', new_episode_path, class: 'btn btn-primary'

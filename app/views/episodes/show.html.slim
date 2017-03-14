@@ -1,10 +1,7 @@
-p#notice = notice
+h3 Title:
+p = @episode.title
 
-p
-  strong Title:
-  = @episode.title
-p
-  strong Description:
-  = @episode.description
+h3 Description:
+p = @episode.description
 
 = link_to 'Subscribe to watch', new_subscription_path, class: 'btn btn-primary'
