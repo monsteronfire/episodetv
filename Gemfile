@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'pundit'
 gem 'stripe'
 
 group :development, :test do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310081005) do
+ActiveRecord::Schema.define(version: 20170314094749) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20170310081005) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "stripe_id"
+    t.string   "stripe_subscription_id"
+    t.string   "card_last_4"
+    t.integer  "card_exp_month"
+    t.integer  "card_exp_year"
+    t.string   "card_brand"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

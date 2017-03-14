@@ -12,23 +12,21 @@ class SubscriptionsController < ApplicationController
     # Amount in cents
     @amount = 500
 
-    customer = if current_user.stripe_id?
-                 Stripe::Customer.retrieve(current_user.stripe_id)
-               else
-                 Stripe::Customer.create( email: params[:stripeEmail] )
-               end
-
-    subscription = customer.subscriptions.create(
-      source: params[:stripeToken],
-      plan: '2'
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
     )
 
-    current_user.update(
-      stripe_id: customer.id,
-      stripe_subscription_id: subscription.id
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
     )
 
-    redirect_to root_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
   end
 
   def destroy
@@ -40,6 +38,8 @@ class SubscriptionsController < ApplicationController
     if !user_signed_in?
       session['user_return_to'] = new_subscription_path
       redirect_to  new_user_registration_path
+    else
+      redirect_to new_user_registration_path
     end
   end
 end
