@@ -1,0 +1,11 @@
+---
+:concurrency: 25
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:queues:
+  - default
+  - mailers
+  - episodes_default
+  - episodes_mailers
+  - [high_priority, 2]
+:daemon: true
