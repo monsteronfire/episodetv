@@ -28,7 +28,7 @@ class SubscriptionsController < ApplicationController
       stripe_subscription_id: subscription.id
     )
 
-    redirect_to root_path
+    redirect_to root_path, notice: 'You have successfully subscribed.'
   end
 
   def destroy
