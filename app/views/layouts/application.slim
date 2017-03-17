@@ -9,6 +9,5 @@ html
   body
     = render 'partials/nav'
     .container
-      p.notice = notice
-      p.alert = alert
+      = render 'partials/flash'
       = yield

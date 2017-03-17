@@ -28,14 +28,10 @@ class EpisodesController < ApplicationController
     @episode = Episode.new(episode_params)
     authorize @episode
 
-    respond_to do |format|
-      if @episode.save
-        format.html { redirect_to @episode, notice: 'Episode was successfully created.' }
-        format.json { render :show, status: :created, location: @episode }
-      else
-        format.html { render :new }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
+    if @episode.save
+      redirect_to @episode, notice: 'Episode was successfully created.', class: 'alert-success'
+    else
+      render 'new'
     end
   end
 
@@ -44,14 +40,10 @@ class EpisodesController < ApplicationController
   def update
     authorize @episode
 
-    respond_to do |format|
-      if @episode.update(episode_params)
-        format.html { redirect_to @episode, notice: 'Episode was successfully updated.' }
-        format.json { render :show, status: :ok, location: @episode }
-      else
-        format.html { render :edit }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
+    if @episode.update(episode_params)
+      redirect_to @episode, notice: 'Episode was successfully updated.', class: 'alert-success'
+    else
+      render 'edit'
     end
   end
 
