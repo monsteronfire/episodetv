@@ -1,0 +1,21 @@
+.episode-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.episode-item {
+  width: 33%;
+  padding: 10px;
+}
+
+.episode-image {
+  padding: 10px;
+  img {
+    width: 100%;
+  }
+}
+
+.episode-links {
+  list-style: none;
+}
