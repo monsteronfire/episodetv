@@ -14,6 +14,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+@import 'partials/base';
 @import 'partials/layouts';
 @import 'partials/flash';
 @import 'partials/episodes';
+@import 'partials/subscriptions';

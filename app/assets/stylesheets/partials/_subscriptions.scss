@@ -1,0 +1,22 @@
+.subscription-form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.subscription-form-wrapper .panel-body {
+  background-color: lighten($bootstrap-blue, 5%);
+
+  p {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.subscription-form-wrapper form {
+}
+
+.form-heading {
+}

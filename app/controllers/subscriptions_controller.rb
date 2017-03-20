@@ -9,26 +9,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    # Amount in cents
-    @amount = 500
-
-    customer = if current_user.stripe_id?
-                 Stripe::Customer.retrieve(current_user.stripe_id)
-               else
-                 Stripe::Customer.create( email: params[:stripeEmail] )
-               end
-
-    subscription = customer.subscriptions.create(
-      source: params[:stripeToken],
-      plan: '1'
-    )
-
-    current_user.update(
-      stripe_id: customer.id,
-      stripe_subscription_id: subscription.id
-    )
-
-    redirect_to root_path, notice: 'You have successfully subscribed.'
+    if SubscribeUser.new(current_user, '1', params).call
+      redirect_to root_path, notice: 'You have successfully subscribed.'
+    else
+      render :new, notice: 'unable to subscribe you.'
+    end
   end
 
   def destroy
