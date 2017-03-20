@@ -33,10 +33,11 @@ class SubscribeUser
   end
 
   def update_user_subscription_info
+    raise remote_customer
     user.update(
       stripe_id: remote_customer.id,
       stripe_subscription_id: subscription.id,
-      card_last4: remote_customer.card_last_4,
+      #card_last_4: remote_customer.sources.data.fetch("last4"),
       #card_exp_month: params[:card_exp_month],
       #card_exp_year: params[:card_year_month],
       #card_brand: params[:card_brand]
