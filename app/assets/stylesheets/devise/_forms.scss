@@ -1,0 +1,22 @@
+.devise-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.devise-form-wrapper .panel {
+  width: 100%;
+
+  @media (min-width: $medium-width) {
+    width: 40%;
+  }
+}
+
+.devise-form-wrapper .panel-heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.devise-form-wrapper .panel-heading,
+.devise-form-wrapper .panel-footer {
+  text-align: center;
+}
