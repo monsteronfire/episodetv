@@ -1,4 +1,7 @@
 h1 Listing episodes
+- if current_user && current_user.admin?
+  = link_to 'New Episode', new_episode_path, class: 'btn btn-primary'
+
 .episode-wrapper
   - @episodes.each do |episode|
     .episode-item
@@ -10,7 +13,4 @@ h1 Listing episodes
         li = link_to 'Show', episode, class: 'btn btn-default'
         - if current_user && current_user.admin?
           li = link_to 'Edit', edit_episode_path(episode), class: 'btn btn-default'
-          li = link_to 'Destroy', episode, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
-
-- if current_user && current_user.admin?
-  = link_to 'New Episode', new_episode_path, class: 'btn btn-primary'
+          li.btn-destroy = link_to 'Destroy', episode, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'

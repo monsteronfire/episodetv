@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    if SubscribeUser.new(current_user, '1', params).call
+    if SubscribeUser.new(current_user, 'monthly-plan', params).call
       redirect_to root_path, notice: 'You have successfully subscribed.'
     else
       render :new, notice: 'unable to subscribe you.'

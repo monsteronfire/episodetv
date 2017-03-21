@@ -17,5 +17,13 @@
 }
 
 .episode-links {
+  padding-left: 0px;
   list-style: none;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }

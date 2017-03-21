@@ -20,27 +20,32 @@ class SubscribeUser
       if user.stripe_id?
         Stripe::Customer.retrieve(user.stripe_id)
       else
-        Stripe::Customer.create( email: params[:stripeEmail] )
+        Stripe::Customer.create(
+          email: params[:stripeEmail],
+          card: params[:stripeToken]
+        )
       end
     end
   end
 
   def create_remote_subscription
     @subscription ||= remote_customer.subscriptions.create(
-      source: params[:stripeToken],
       plan: plan_id
     )
   end
 
+  def remote_customer_card
+    remote_customer.sources.data[0]
+  end
+
   def update_user_subscription_info
-    raise remote_customer
     user.update(
       stripe_id: remote_customer.id,
       stripe_subscription_id: subscription.id,
-      #card_last_4: remote_customer.sources.data.fetch("last4"),
-      #card_exp_month: params[:card_exp_month],
-      #card_exp_year: params[:card_year_month],
-      #card_brand: params[:card_brand]
+      card_last_4: remote_customer_card.last4,
+      card_exp_month: remote_customer_card.exp_month,
+      card_exp_year: remote_customer_card.exp_year,
+      card_brand: remote_customer_card.brand
     )
   end
 end
