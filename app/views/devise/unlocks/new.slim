@@ -1,0 +1,17 @@
+.devise-form-wrapper
+  .panel.panel-default
+    .panel-heading
+      h2 Resend unlock instructions
+
+    .panel-body
+      = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, class: 'form-control'
+        .actions
+          = f.submit "Resend unlock instructions", class: 'btn btn-primary form-control'
+
+    .panel-footer
+      = render "devise/shared/links"
