@@ -39,7 +39,6 @@ class SubscribeUser
   end
 
   def update_user_subscription_info
-    #raise remote_customer
     user.update(
       stripe_id: remote_customer.id,
       stripe_subscription_id: subscription.id,
