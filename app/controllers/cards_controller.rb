@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   #before_action :subscribed?
 
   def update
-    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    customer = remote_customer
     subscription = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
     subscription.source =  params[:stripeToken]
     subscription.save
@@ -15,6 +15,21 @@ class CardsController < ApplicationController
       card_brand: remote_customer_card.brand
     )
 
-    redirect_to edit_user_registration_path
+    redirect_to edit_card_path
   end
+
+  private
+
+  def remote_customer
+    Stripe::Customer.retrieve(current_user.stripe_id)
+  end
+
+  def remote_customer_card
+    remote_customer.sources.data[0]
+  end
+
+  def card_id
+    remote_customer_card.id
+  end
+
 end

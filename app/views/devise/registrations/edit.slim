@@ -42,13 +42,7 @@
       .panel-heading
         h2 Update card
       .panel-body
-        article
-          p Your current card on file is
-          p #{current_user.card_brand} -  **** **** **** #{current_user.card_last_4}
-          p Expires #{current_user.card_exp_month} / #{current_user.card_exp_year}
-        .form-group
-        article
-          = render 'subscriptions/card_form'
+        = link_to 'Update credit card', edit_card_path
 
 .devise-form-wrapper
   .panel.panel-default
