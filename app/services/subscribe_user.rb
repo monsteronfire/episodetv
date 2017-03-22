@@ -1,6 +1,6 @@
 class SubscribeUser
   attr_reader :user, :plan_id, :params
-  attr_accessor :subscription
+  attr_accessor :subscription, :card
 
   def initialize(user, plan_id, params)
     @user = user
@@ -38,6 +38,14 @@ class SubscribeUser
     remote_customer.sources.data[0]
   end
 
+  def card_id
+    remote_customer_card.id
+  end
+
+  def remote_card
+    @card ||= remote_customer.sources.retrieve(card_id)
+  end
+
   def update_user_subscription_info
     user.update(
       stripe_id: remote_customer.id,
@@ -47,5 +55,10 @@ class SubscribeUser
       card_exp_year: remote_customer_card.exp_year,
       card_brand: remote_customer_card.brand
     )
+  end
+
+  def update_card_details
+    remote_card.name = "Sam Harris"
+    remote_card.save
   end
 end
