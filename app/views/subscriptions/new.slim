@@ -1,3 +1,5 @@
 h1 Subscribe
 .subscription-form-wrapper
+  - if current_user.card_last_4? && !current_user.stripe_subscription_id?
+    p You do not have an active subscription
   = render 'form'

@@ -11,4 +11,4 @@
           #error_explanation
             p= flash[:error]
 
-      script.stripe-button data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" src="https://checkout.stripe.com/checkout.js"
+        script.stripe-button data-label="Subscribe" data-description="A month's subscription" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" src="https://checkout.stripe.com/checkout.js"

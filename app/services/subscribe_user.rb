@@ -30,7 +30,7 @@ class SubscribeUser
 
   def create_remote_subscription
     @subscription ||= remote_customer.subscriptions.create(
-      plan: plan_id
+      plan: plan_id,
     )
   end
 
@@ -42,6 +42,7 @@ class SubscribeUser
     user.update(
       stripe_id: remote_customer.id,
       stripe_subscription_id: subscription.id,
+      stripe_card_id: remote_customer_card.id,
       card_last_4: remote_customer_card.last4,
       card_exp_month: remote_customer_card.exp_month,
       card_exp_year: remote_customer_card.exp_year,

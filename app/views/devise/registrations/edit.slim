@@ -44,13 +44,13 @@
       .panel-body
         = link_to 'Update credit card', edit_card_path
 
-.devise-form-wrapper
-  .panel.panel-default
-    .panel-heading
-      h2 Cancel my subscription
-    .panel-body
-        p Discontinue subscription to EpisodesTV. You will still be able to access your account, but you will not have access to the videos
-        = button_to "Cancel subscription", subscription_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-default form-control'
+  .devise-form-wrapper
+    .panel.panel-default
+      .panel-heading
+        h2 Cancel my subscription
+      .panel-body
+          p Discontinue subscription to EpisodesTV. You will still be able to access your account, but you will not have access to the videos
+          = button_to "Cancel subscription", subscription_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-default form-control'
 
 .devise-form-wrapper
   .panel.panel-default
