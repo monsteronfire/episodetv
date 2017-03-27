@@ -34,6 +34,10 @@ class SubscribeUser
     )
   end
 
+  def remote_customer_card
+    remote_customer.sources.data[0]
+  end
+
   def update_user_subscription_info
     user.update(
       stripe_id: remote_customer.id,
