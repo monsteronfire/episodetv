@@ -24,7 +24,7 @@ class UpdateCard
   end
 
   def remote_customer_card
-    remote_customer.sources.data[0]
+    remote_customer.sources.data.last
   end
 
   def update_card
