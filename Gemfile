@@ -41,7 +41,6 @@ gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
 gem 'stripe'
-gem 'stripe_event'
 gem 'sidekiq'
 gem 'redis'
 

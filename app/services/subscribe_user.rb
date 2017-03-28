@@ -40,7 +40,7 @@ class SubscribeUser
   end
 
   def remote_customer_card
-    Stripe::Customer.retrieve(remote_customer.id).sources.data[-1]
+    Stripe::Customer.retrieve(remote_customer.id).sources.data.last
   end
 
   def update_user_subscription_info
