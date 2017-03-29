@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     #customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete(at_period_end: true)
     customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
+    SubscriptionMailer.cancel_subscription_email(current_user).deliver_now
 
     current_user.update(
       stripe_subscription_id: nil,
