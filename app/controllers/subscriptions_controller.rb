@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
     if SubscribeUser.new(current_user, 'monthly-plan', params).call
       redirect_to root_path, notice: 'You have successfully subscribed.'
     else
-      render :new, notice: 'unable to subscribe you.'
+      render :new, notice: 'Unable to subscribe you.'
     end
   end
 
@@ -26,7 +26,7 @@ class SubscriptionsController < ApplicationController
       stripe_card_id: nil
     )
 
-    redirect_to root_path, notice: 'your subscription has been cancelled'
+    redirect_to root_path, notice: 'Your subscription has been cancelled'
   end
 
   private
