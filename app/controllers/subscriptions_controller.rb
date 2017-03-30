@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     if SubscribeUser.new(current_user, 'monthly-plan', params).call
-      SubscriptionMailer.subscription_success_email(current_user).deliver_now
+      WelcomeEmailJob.perform_later(current_user.id)
       redirect_to root_path, notice: 'You have successfully subscribed.'
     else
       render :new, notice: 'Unable to subscribe you.'
@@ -21,7 +21,7 @@ class SubscriptionsController < ApplicationController
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     #customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete(at_period_end: true)
     customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
-    SubscriptionMailer.cancel_subscription_email(current_user).deliver_now
+    SubscriptionMailer.cancel_subscription_email(current_user).deliver_later
 
     current_user.update(
       stripe_subscription_id: nil,

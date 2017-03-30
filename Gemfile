@@ -41,8 +41,9 @@ gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
 gem 'stripe'
-gem 'sidekiq'
 gem 'redis'
+gem 'redis-namespace'
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
