@@ -2,7 +2,7 @@ h1 Listing episodes
 - if current_user && current_user.admin?
   = link_to 'New Episode', new_episode_path, class: 'btn btn-primary'
 
-.episode-wrapper
+section.episode-wrapper
   - @episodes.each do |episode|
     .episode-item
       h4 = episode.title
