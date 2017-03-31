@@ -4,6 +4,8 @@ p = @episode.title
 h3 Description:
 p = @episode.description
 
+h4 Tags
+p = render @episode.tags
 
 - if current_user_subscribed?
   p SECRET VIDEO HERE
