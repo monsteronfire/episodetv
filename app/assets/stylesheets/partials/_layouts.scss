@@ -1,3 +1,12 @@
 th, td {
   padding: 5px;
 }
+
+.tag {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-right: 2px;
+  background-color: navy;
+  color: white;
+}
