@@ -44,6 +44,7 @@ gem 'stripe'
 gem 'redis'
 gem 'redis-namespace'
 gem 'sidekiq'
+gem 'will_paginate'
 gem 'acts-as-taggable-on'
 
 group :development, :test do
