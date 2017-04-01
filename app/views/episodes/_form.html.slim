@@ -15,5 +15,8 @@
   .form-group
     = f.label :screenshot
     = f.file_field :screenshot
+  .form-group
+    = f.label :tag_list
+    = f.text_field :tag_list, label: "Tags", class: 'form-control'
   .actions
     = f.button :submit, class: 'btn btn-primary'

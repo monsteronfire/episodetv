@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  ActsAsTaggableOn.delimiter = [',', ' ']
   include Pundit
   protect_from_forgery with: :exception
 
