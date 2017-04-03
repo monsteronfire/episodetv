@@ -3,4 +3,5 @@ class Episode < ApplicationRecord
   validates :description, presence: true
   mount_uploader :screenshot, ScreenshotUploader
   acts_as_taggable
+  searchkick
 end
