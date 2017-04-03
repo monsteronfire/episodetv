@@ -4,7 +4,8 @@ class EpisodesController < ApplicationController
   # GET /episodes
   # GET /episodes.json
   def index
-    @episodes = Episode.search params.fetch(:q, "*"), page: params[:page], per_page: 6
+    query = params.fetch(:q, '*'). presence || '*'
+    @episodes = Episode.search query, page: params[:page], per_page: 6
   end
 
   # GET /episodes/1
