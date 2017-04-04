@@ -4,7 +4,8 @@ class EpisodesController < ApplicationController
   # GET /episodes
   # GET /episodes.json
   def index
-    @episodes = Episode.paginate(:page => params[:page], :per_page => 6)
+    query = params.fetch(:q, '*'). presence || '*'
+    @episodes = Episode.search query, page: params[:page], per_page: 6, suggest: true
   end
 
   # GET /episodes/1
@@ -56,6 +57,14 @@ class EpisodesController < ApplicationController
       format.html { redirect_to episodes_url, notice: 'Episode was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def autocomplete
+    render json: Episode.search(params[:term], {
+      fields: [:title, :tag_list],
+      match: :word_start,
+      limit: 10,
+    }).map(&:title)
   end
 
   private
