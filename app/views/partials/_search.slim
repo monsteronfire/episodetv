@@ -1,2 +1,5 @@
 = form_tag episodes_path, method: :get do
   = text_field_tag :q, nil, placeholder: "Search", class: 'form-control'
+
+- if @episodes.suggestions.any?
+  p Did you mean #{@episodes.suggestions.first} ?
